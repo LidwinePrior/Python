@@ -1,0 +1,5 @@
+Hello world
+Your age is: 30.0
+String representation of age: 30.0
+Length of 'Hello Word': 10
+Length of the list 'arr': 2

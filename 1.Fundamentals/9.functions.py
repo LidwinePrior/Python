@@ -94,8 +94,8 @@ declare()
 
 
 # 1. Say hello
-def hello (name = 'anonymous'):
-    return 'hello {}!'.format(name)
+def hello (name = 'Anonymous'):
+    return 'Hello {}'.format(name)
 print(hello('Lidwine'))
 print(hello())
 
@@ -210,7 +210,7 @@ def count_sheep(n):
     # itérer de 1 à n inclus
     for i in range(1, n+1):
         # ajouter chaque itération à la variable result
-        result +="{} sheep ...".format(i)
+        result +="{} sheep...".format(i)
     return result
 print(count_sheep(5))
 
@@ -219,9 +219,76 @@ print(count_sheep(5))
 def final_grade(exam, projects):
     if exam > 90 or projects > 10:
         return 100
-    elif exam > 75 and exam < 90 and projects >= 5:
+    elif exam > 75 and projects >= 5:
         return 90
-    elif exam > 50 and exam < 75 and projects >= 2
+    elif exam > 50 and projects >= 2:
         return 75
     else :
         return 0
+print(final_grade(91, 11))
+
+
+
+# test your code
+
+import unittest
+ 
+class TestNotebook(unittest.TestCase):
+    
+    def test_hello(self):
+        self.assertEqual(hello(),'Hello Anonymous')
+        self.assertEqual(hello("Jean"),'Hello Jean')
+    
+    def test_sumOfStudents(self):
+        self.assertEqual(sumOfStudents([["Jean", "Alice", "Edwige", "Peter", "James"],["Redouane", "Justine", "Adrien", "Nicolas", "Pierre"]]), 10)
+        
+ 
+    def test_is_divisible (self):
+        self.assertEqual(is_divisible(3,3,4),False)
+        self.assertEqual(is_divisible(12,3,4),True)
+        self.assertEqual(is_divisible(8,3,4),False)
+        self.assertEqual(is_divisible(48,3,4),True)
+
+    
+    def test_abbrevName(self):
+        self.assertEqual(abbrevName("Sam Harris"), "S.H");
+        self.assertEqual(abbrevName("Patrick Feenan"), "P.F");
+        self.assertEqual(abbrevName("Evan Cole"), "E.C");
+        self.assertEqual(abbrevName("P Favuzzi"), "P.F");
+        self.assertEqual(abbrevName("David Mendieta"), "D.M");
+
+    
+    def test_positive_sum(self):
+        self.assertEqual(positive_sum([1,2,3,4,5]),15)
+        self.assertEqual(positive_sum([1,-2,3,4,5]),13)
+        self.assertEqual(positive_sum([-1,2,3,4,-5]),9)
+        self.assertEqual(positive_sum([]),0)
+        self.assertEqual(positive_sum([-1,-2,-3,-4,-5]),0)
+    
+    def test_sum_mixed_array(self):
+        self.assertEqual(sum_mix([9, 3, '7', '3']), 22)
+        self.assertEqual(sum_mix(['5', '0', 9, 3, 2, 1, '9', 6, 7]), 42)
+        self.assertEqual(sum_mix(['3', 6, 6, 0, '5', 8, 5, '6', 2,'0']), 41)
+        self.assertEqual(sum_mix(['1', '5', '8', 8, 9, 9, 2, '3']), 45)
+        self.assertEqual(sum_mix([8, 0, 0, 8, 5, 7, 2, 3, 7, 8, 6, 7]), 61)
+    
+    def test_return_day(self):
+        self.assertEqual(whatday(1), 'Sunday')
+        self.assertEqual(whatday(2), 'Monday')
+        self.assertEqual(whatday(3), 'Tuesday')
+        self.assertEqual(whatday(8), 'Wrong, please enter a number between 1 and 7')
+        self.assertEqual(whatday(20), 'Wrong, please enter a number between 1 and 7')
+    
+    def test_final_grade(self):
+        self.assertEqual(final_grade(100, 12), 100)
+        self.assertEqual(final_grade(85, 5), 90)
+    
+    def test_count_sheep(self):
+        self.assertEqual(count_sheep(1), "1 sheep...");
+        self.assertEqual(count_sheep(2), "1 sheep...2 sheep...")
+        self.assertEqual(count_sheep(3), "1 sheep...2 sheep...3 sheep...")
+        
+    def test_summation(self):
+        self.assertEqual(summation(1), 1)
+        self.assertEqual(summation(8), 36)
+unittest.main(argv=[''], verbosity=2, exit=False)

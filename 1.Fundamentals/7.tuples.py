@@ -124,3 +124,9 @@ print(totalPrice)
 #10. Remove one of the articles from the dictionary
 price.pop('Laser sword')
 print(price)
+
+
+
+# remove the first and the last characters
+def remove_char(s):
+    return s[1 : -1]

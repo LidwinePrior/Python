@@ -200,6 +200,9 @@ def summation(num):
         # À chaque itération, la valeur actuelle est ajoutée à la variable total
         total += i
     return total
+# or
+# def summation(num):
+#     return sum(range(1,num+1))
 
 print(summation(8))
 
